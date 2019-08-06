@@ -13,7 +13,7 @@ import args from './util/args'
 
 
 gulp.task('scripts', () => {
-    return gulp.scr(['app/js/index.js'])
+    return gulp.src(['app/js/index.js'])
         .pipe(plumber({
             errorHandle: function () {
 
@@ -21,9 +21,9 @@ gulp.task('scripts', () => {
         }))
         .pipe(named()).pipe(gulpWebpack({
             module: {
-                loaders: [{
+                rules: [{
                     test: /\.js$/,
-                    loader: 'babel'
+                    loader: 'babel-loader'
                 }]
             }
         }), null, (error, stats) => {
